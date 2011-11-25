@@ -1,0 +1,76 @@
+{% extends '::base.html.twig' %} 
+{% block body %}
+<h1>Klient</h1>
+
+<table class="record_properties">
+    <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ entity.id }}</td>
+        </tr>
+        <tr>
+            <th>Imie</th>
+            <td>{{ entity.imie }}</td>
+        </tr>
+        <tr>
+            <th>Nazwisko</th>
+            <td>{{ entity.nazwisko }}</td>
+        </tr>
+        <tr>
+            <th>Email</th>
+            <td>{{ entity.email }}</td>
+        </tr>
+        <tr>
+            <th>Telefon</th>
+            <td>{{ entity.telefon }}</td>
+        </tr>
+        <tr>
+            <th>Ulica</th>
+            <td>{{ entity.ulica }}</td>
+        </tr>
+        <tr>
+            <th>Nr_domu</th>
+            <td>{{ entity.nrdomu }}</td>
+        </tr>
+        <tr>
+            <th>Kod</th>
+            <td>{{ entity.kod }}</td>
+        </tr>
+        <tr>
+            <th>Miejscowosc</th>
+            <td>{{ entity.miejscowosc }}</td>
+        </tr>
+        <tr>
+            <th>Nip</th>
+            <td>{{ entity.nip }}</td>
+        </tr>
+        <tr>
+            <th>Id zamowienie:</th>
+            <td>
+            {% for key,value in entity2 %}
+            {{value}}<br>
+           {% endfor %}
+            
+            </td>
+        </tr>
+    </tbody>
+</table>
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('klient') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('klient_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>
+        <form action="{{ path('klient_delete', { 'id': entity.id }) }}" method="post">
+            {{ form_widget(delete_form) }}
+            <button type="submit">Delete</button>
+        </form>
+    </li>
+</ul>
+{% endblock %}

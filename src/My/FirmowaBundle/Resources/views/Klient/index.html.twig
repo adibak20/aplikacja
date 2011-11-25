@@ -1,0 +1,56 @@
+{% extends '::base.html.twig' %} 
+{% block body %}
+<h1>Klient list</h1>
+
+<table class="records_list">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Imie</th>
+            <th>Nazwisko</th>
+            <th>Email</th>
+            <th>Telefon</th>
+            <th>Ulica</th>
+            <th>Nr_domu</th>
+            <th>Kod</th>
+            <th>Miejscowosc</th>
+            <th>Nip</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td><a href="{{ path('klient_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+            <td>{{ entity.imie }}</td>
+            <td>{{ entity.nazwisko }}</td>
+            <td>{{ entity.email }}</td>
+            <td>{{ entity.telefon }}</td>
+            <td>{{ entity.ulica }}</td>
+            <td>{{ entity.nrdomu }}</td>
+            <td>{{ entity.kod }}</td>
+            <td>{{ entity.miejscowosc }}</td>
+            <td>{{ entity.nip }}</td>
+            <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('klient_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('klient_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<ul>
+    <li>
+        <a href="{{ path('klient_new') }}">
+            Create a new entry
+        </a>
+    </li>
+</ul>
+{% endblock %}
